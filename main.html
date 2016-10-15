@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pixol - Pixel Made Easy</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+        <link href="favicon.ico" rel="icon">
+    </head> 
+    <body>
+        <div id="fullPopup">
+            <div id="fullMask"></div>
+            
+            <div id="download_popupContainer" class="popupContainer">
+                <div id="download_popupTextContainer">
+                    <h1>DOWNLOAD</h1>
+                    <p>To download, right click the image and then click "Save image as" in the popup menu.</p>
+                </div>
+                <div id="download_popupImageContainer">
+                    <div id="download_popupImageWrapper">
+                        <img id="download_popupImage">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="resize_popupContainer" class="popupContainer">
+                <div id="resize_popupTextContainer">
+                    <h1>RESIZE CANVAS</h1>
+                    <p>Resize the Canvas by adding or substracting pixel from the four sides using the editor below, then click apply to make the changes.</p>
+                </div>
+                <div id="resize_popupFormContainer">
+                    <div class="resize_popupStatWrapper">
+                        <p>Canvas Width: <span id="sw">100px</span></p>
+                        <p>Canvas Height: <span id="sh">100px</span></p>
+                    </div>
+                    <div class="resize_popupInputWrapper"><p>Right: </p><input id="inputRight" type="number" value="0"></div>
+                    <div class="resize_popupInputWrapper"><p>Left: </p><input id="inputLeft" type="number" value="0"></div>
+                    <div class="resize_popupInputWrapper"><p>Top: </p><input id="inputTop" type="number" value="0"></div>
+                    <div class="resize_popupInputWrapper"><p>Bottom: </p><input id="inputBottom" type="number" value="0"></div>
+                </div>
+                <div id="resize_popupButtonContainer">
+                    <button id="resize_popupButton">Apply</button>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div id="fullContainer">
+            <div id="mainRow">
+                <div id="panelContainer">
+                    <div id="topPanel">
+                        <div id="topContainer">
+                            <div id="topImgWrapper">
+                                <img src="ImagesUI/PIXOL.png">
+                            </div><div id="topMenuHead">
+                                <div id="topMenuHeadBtnContainer">
+                                    <button onclick="Popup.pushIn('download')" title="Download"><img src="PixelUI/Download.png"></button>
+                                    <button onclick="Popup.pushIn('resize')" title="Resize"><img src="PixelUI/Shape%20Layers.png"></button>
+                                    <button onclick="centerEditor()" title="Center Editor"><img src="PixelUI/Location.png"></button>
+                                    <button onclick="editorHistory.undo()" title="Undo"><img src="PixelUI/Previous.png"></button>
+                                    <button onclick="editorHistory.redo()" title="Redo"><img src="PixelUI/Next.png"></button>
+                                </div>
+                            </div><div id="topMenuBtn">
+                                <img id="topMenuBtnIcon" src="ImagesUI/menu%20icon.png">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="toolPanel">
+                        <div id="toolWrapper">
+                            <button id="pencilBtn" onclick="toolUpdate('pencil')"><div class="hw"></div><img src="PixelUI/Paintbrush%20Tool.png"></button>
+                            <button id="eraserBtn" onclick="toolUpdate('eraser')"><div class="hw"></div><img src="PixelUI/Eraser.png"></button>
+                            <button id="bucketFillBtn" onclick="toolUpdate('bucketFill')"><div class="hw"></div><img src="PixelUI/Blur%20Tool.png"></button>
+                            <button id="colorPickerBtn" onclick="toolUpdate('colorPicker')"><div class="hw"></div><img src="PixelUI/Eyedropper%20Tool.png"></button>
+                            <button id="lineBtn" onclick="toolUpdate('line')"><div class="hw"></div><img src="PixelUI/Pen%20Tool.png"></button>
+                            <button id="boxBtn" onclick="toolUpdate('box')"><div class="hw"></div><img src="PixelUI/Stop.png"></button>
+                            <!--<button onclick="history.save()"><div class="hw"></div><img src="PixelUI/Copy%201.png"></button>-->
+                        </div> 
+                        <input class="jscolor {onFineChange:'bgUpdate(this)'}" id="colorPicker" onchange="colorUpdate(this.jscolor)">
+                        <div id="coordDisplay">X: <span>0</span> Y: <span>0</span></div>
+                    </div>
+
+                    <div id="mainPanel" class="">
+                        <div id="editorContainer">
+                            <div id="canvasWrapper">
+                                <div id="canvasContainer">
+                                    <canvas id="clearCanvas" width="578" height="200"></canvas>
+                                    <canvas id="mainCanvas" width="578" height="200"></canvas>
+                                    <canvas id="editCanvas" width="578" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="jscolor.min.js"></script>
+    <script src="script.js"></script>
+    <script src="ui_script.js"></script>
+    
+</html>
